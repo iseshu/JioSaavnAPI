@@ -2,6 +2,7 @@ from flask import Flask, request, redirect, jsonify, json
 import time
 import jiosaavn
 import os
+import requests
 from traceback import print_exc
 from flask_cors import CORS
 
@@ -12,7 +13,9 @@ CORS(app)
 
 @app.route('/')
 def home():
-    return redirect("https://cyberboysumanjay.github.io/JioSaavnAPI/")
+    url = "https://cyberboysumanjay.github.io/JioSaavnAPI/"
+    req = requests.get(url).content
+    return req
 
 
 @app.route('/song/')
